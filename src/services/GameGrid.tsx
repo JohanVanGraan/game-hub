@@ -1,35 +1,10 @@
 /** @format */
 
-import { useEffect, useState } from "react";
-//import apiClient from "../services/apiClient";
-import axios from "axios";
 import { Text } from "@chakra-ui/react";
-
-interface Game {
-  id: number;
-  name: string;
-}
-
-interface FetchGamesResponse {
-  count: number;
-  results: Game[];
-}
+import useGames from "../hooks/useGames";
 
 const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://api.rawg.io/api/games?key=4feebb335c1340bfa436e6e959e2a9b6&dates"
-      )
-      .then((res) => {
-        setGames(res.data.results);
-      })
-      .catch((err) => setError(err.message));
-  });
-
+  const { games, error } = useGames();
   return (
     <>
       {error && <Text>{error}</Text>}
