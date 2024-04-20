@@ -3,9 +3,17 @@
 import { useEffect, useState } from "react";
 import axios, { CanceledError } from "axios";
 
-interface Game {
+export interface Platform {
   id: number;
   name: string;
+  slug: string;
+}
+
+export interface Game {
+  id: number;
+  name: string;
+  background_image: string;
+  parent_platforms: { platform: Platform }[];
 }
 
 // interface FetchGamesResponse {
@@ -22,7 +30,7 @@ const useGames = () => {
     const signal = controller.signal;
     axios
       .get(
-        "https://api.rawg.io/api/games?key=4feebb335c1340bfa436e6e959e2a9b6&dates",
+        "https://api.rawg.io/api/games?key=4feebb335c1340bfa436e6e959e2a9b6",
         { signal }
       )
       .then((res) => {
