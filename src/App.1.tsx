@@ -6,9 +6,9 @@ import GameGrid from "./services/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenres";
 import { useState } from "react";
-import PlatformSelector from "./components/PlatformSelector";
+import PlatformIconList from "./components/PlatformIconList";
 
-function App() {
+export function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
   return (
     <>
@@ -33,12 +33,10 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area='main'>
-          <PlatformSelector />
+          <PlatformIconList />
           <GameGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>
     </>
   );
 }
-
-export default App;

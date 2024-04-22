@@ -22,7 +22,6 @@ const useData = <T>(
       const controller = new AbortController();
       // const signal = controller.signal;
       setLoading(true);
-
       axios
         .get<FetchResponse<T>>(
           "https://api.rawg.io/api" +
