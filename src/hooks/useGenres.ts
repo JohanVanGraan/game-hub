@@ -1,6 +1,7 @@
 /** @format */
 
-import useData from "./useData";
+//import useData from "./useData";
+import genres from "../Data/genres";
 
 export interface Genre {
   id: number;
@@ -8,5 +9,6 @@ export interface Genre {
   image_background: string;
 }
 
-const useGenres = (selectedGenre: Genre | null) => useData<Genre>("/genres");
+// const useGenres = () => useData<Genre>("/genres"); // get genres from web server RAWG Video Games Database rawg.io
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
 export default useGenres;
